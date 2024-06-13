@@ -103,17 +103,17 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Real-Time Tweet Sentiment Analysis for Streaming Data Classification",
-    description: "Give a short description about project 1",
+    description: "Developing a comprehensive data processing pipeline utilizing Apache Kafka and Apache Spark for real-time analysis and prediction. By leveraging Apache Kafka, I efficiently streamed data to Apache Spark for immediate classification. Within Spark, I implemented a predictive model using Support Vector Machine (SVM) to analyze the incoming data streams and generate real-time insights. Additionally, I designed and integrated a user-friendly dashboard interface for monitoring predictions in real time, providing users with valuable insights into trends and patterns. The project involved the use of technologies such as Apache Kafka, Apache Spark, Docker, MongoDB, Zookeeper, and a machine learning pipeline.",
     link: "https://github.com/BAKKALIAYOUB/Sentiment_Analysis",
   },
   {
     title: "Custome ChatBot with RAG and Fine-tuning",
-    description: "Give a short description about project 2",
+    description: "I implemented a custom chatbot using a Retrieval-Augmented Generation (RAG) system, designed to provide context-based answers to user questions. This system combines retrieval, reading, and generation capabilities to offer accurate responses. The chatbot features a user-friendly interface where users can input their questions and receive answers generated based on the retrieved context from a vector database. This project leveraged advanced technologies including Langchain, Large Language Models (LLMs), chromadb, Docker, Next.js, RAG, Natural Language Processing (NLP), and Ollama.",
     link: "https://github.com/BAKKALIAYOUB/CHATBOT-RAG",
   },
   {
     title: "Implementation of XGBoost for Cancer Classification",
-    description: "Give a short description about project 3",
+    description: "I implemented XGBoost from scratch using Python and NumPy arrays to classify cancer types. This project involved preprocessing and classifying the Arcene cancer dataset, enhancing my proficiency in the functionalities of XGBoost and the machine learning pipeline. Technologies used for this project included scikit-learn, Python, NumPy, and pandas.",
     link: "https://github.com/",
   },
 ];
