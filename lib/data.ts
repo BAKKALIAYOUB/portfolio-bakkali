@@ -10,7 +10,16 @@ import {
   SiGit,
   SiDocker,
   SiBootstrap,
-  SiTailwindcss, SiTensorflow, SiPytorch, SiNumpy, SiPandas, SiApachehadoop, SiApachekafka
+  SiTailwindcss,
+  SiTensorflow,
+  SiPytorch,
+  SiNumpy,
+  SiPandas,
+  SiApachehadoop,
+  SiApachekafka,
+  SiLinux,
+  SiCplusplus,
+  SiLaravel
 } from "react-icons/si";
 
 export const skills = [
@@ -92,6 +101,18 @@ export const skills = [
     text: "Bootstrap",
   },
 
+  {
+    icon: SiLinux,
+    text: "Linux",
+  },
+  {
+    icon: SiCplusplus,
+    text: "C++",
+  },
+  {
+    icon: SiLaravel,
+    text: "Laravel",
+  },
 ];
 
 export interface Project {
