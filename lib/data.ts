@@ -149,10 +149,18 @@ export interface WorkExperience {
 
 export const workExperiences: WorkExperience[] = [
   {
-    company: "D3SOFT",
-    logo: "/company-logo.png",
-    position: "Company 3 Position",
-    description: "Web Application for Car Rental Management",
+    company : "Development of Multi Modal Q&A Chatbot - Vector Analytics",
+    logo : "/Vector Analystic.png",
+    position: "Intern",
+    description: "The ChatBot, powered by OpenAI's Language Learning Model (LLM), efficiently handles user queries across various document types. An intelligent LLMRouter directs queries to the appropriate agent based on document format, such as PDF, CSV, DOCX, or Excel files. For tabular data, the Pandas LLM Agent provides robust statistical analysis and calculations. Additionally, Multi-Modal Retrieval-Augmented Generation (RAG) enhances the chatbot’s capabilities, supporting both text and image data to offer a comprehensive, multimodal query-handling experience.",
+    years: "Jul, 2024 - Aug, 2024",
+
+  },
+  {
+    company: "Web Application for Car Rental Management - D3SOFT",
+    logo: "/img.png",
+    position: "Intern",
+    description: "Manage rental agreements seamlessly with options to create, update, or remove contracts as needed. Efficiently administer user accounts, including controlling access levels within the application for enhanced security. The system provides real-time notifications, ensuring timely alerts for contract deadlines and scheduled car repair times. Track and oversee the availability and condition of rental vehicles, and handle reservations and scheduling for customer bookings, keeping every aspect of rental management streamlined and accessible.",
     years: "May, 2023 - Juin, 2023",
   },
 ];
@@ -160,18 +168,18 @@ export const workExperiences: WorkExperience[] = [
 export const aboutYou = {
   name: "Bakkali Ayoub",
   description:
-    "👋 Hi, I am AYoub Bakkali Enthusiastic and motivated first-year Master's student in Intelligence Artificielle and Data Science with a\n" +
-      "fervent passion for machine learning. Equipped with a solid foundation in development, backed by 2 months of\n" +
-      "professional experience in Web development, I am dedicated to advancing my expertise in the realms of\n" +
-      "artificial intelligence and data science. Known for my strong work ethic, I thrive on challenges and am adept at\n" +
-      "problem-solving. Additionally, I excel in collaborative environments, leveraging my effective communication\n" +
-      "and teamwork skills to achieve shared objectives.",
+    "👋 Hi, I am AYoub Bakkali Machine Learning and AI enthusiast with a deep-rooted passion for solving complex, data-driven challenges, currently\n" +
+      "advancing my skills through a Master’s in Artificial Intelligence and Data Science. With hands-on experience deploying\n" +
+      "scalable ML models and creating real-time data processing solutions, I bring a blend of technical expertise and strategic\n" +
+      "insight to every project. My recent work includes developing an advanced, multi-lingual Chatbot leveraging Retrieval-\n" +
+      "Augmented Generation (RAG) and deploying a Real-Time Tweet Sentiment Analysis pipeline, showcasing a strong grasp of\n" +
+      "end-to-end machine learning pipelines and natural language processing.",
   yearsOfExperience: ">1 years",
   location: "Morroco, Tangier",
   email: "ayoubbakkali484@gmail.com",
 };
 
-export const logoText = "Bakkali AYoub";
+export const logoText = "Bakkali Ayoub";
 
 export const marketingHeadlines = {
   mainHeadline: "Master Student in Artificiel Intelligence and Data Sciences",

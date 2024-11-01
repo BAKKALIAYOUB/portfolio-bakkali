@@ -8,7 +8,7 @@ export default function Sidebar() {
                 {aboutYou.name}
             </p>
             {/* Description */}
-            <p className="text-md text-muted-foreground tracking-tight">
+            <p className="text-md text-muted-foreground tracking-tight text-justify">
                 {aboutYou.description}
             </p>
         </div>
