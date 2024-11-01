@@ -150,7 +150,7 @@ export interface WorkExperience {
 export const workExperiences: WorkExperience[] = [
   {
     company : "Development of Multi Modal Q&A Chatbot - Vector Analytics",
-    logo : "/Vector Analystic.png",
+    logo : "/vector_analystic.png",
     position: "Intern",
     description: "The ChatBot, powered by OpenAI's Language Learning Model (LLM), efficiently handles user queries across various document types. An intelligent LLMRouter directs queries to the appropriate agent based on document format, such as PDF, CSV, DOCX, or Excel files. For tabular data, the Pandas LLM Agent provides robust statistical analysis and calculations. Additionally, Multi-Modal Retrieval-Augmented Generation (RAG) enhances the chatbot’s capabilities, supporting both text and image data to offer a comprehensive, multimodal query-handling experience.",
     years: "Jul, 2024 - Aug, 2024",
