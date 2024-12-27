@@ -133,9 +133,9 @@ export const projects: Project[] = [
     link: "https://github.com/BAKKALIAYOUB/CHATBOT-RAG",
   },
   {
-    title: "Implementation of XGBoost for Cancer Classification",
-    description: "I implemented XGBoost from scratch using Python and NumPy arrays to classify cancer types. This project involved preprocessing and classifying the Arcene cancer dataset, enhancing my proficiency in the functionalities of XGBoost and the machine learning pipeline. Technologies used for this project included scikit-learn, Python, NumPy, and pandas.",
-    link: "https://github.com/",
+    title: "Blockchain-Based Secure Medical Record Managment System",
+    description: "The \"Blockchain-Based Secure Medical Record Management System\" utilizes blockchain technology to securely manage and store patient medical records, ensuring data integrity, confidentiality, and transparency. By integrating Ethereum smart contracts with IPFS for decentralized storage, the system ensures the immutability of records while allowing secure sharing of data among authorized healthcare professionals. Developed using Next.js for the frontend and Ethers.js for Ethereum interaction, the application provides a user-friendly interface for managing patient information. The system also employs encryption and decentralized authentication to guarantee the highest level of security, offering a transparent and tamper-proof solution to traditional healthcare data management systems.",
+    link: "https://github.com/amine-sabbahi/ChainCare-Web3-MedicalRecords-Dapp",
   },
 ];
 
@@ -168,7 +168,7 @@ export const workExperiences: WorkExperience[] = [
 export const aboutYou = {
   name: "Bakkali Ayoub",
   description:
-    "👋 Hi, I am AYoub Bakkali Machine Learning and AI enthusiast with a deep-rooted passion for solving complex, data-driven challenges, currently\n" +
+    "👋 Hi, I am Ayoub Bakkali Machine Learning and AI enthusiast with a deep-rooted passion for solving complex, data-driven challenges, currently\n" +
       "advancing my skills through a Master’s in Artificial Intelligence and Data Science. With hands-on experience deploying\n" +
       "scalable ML models and creating real-time data processing solutions, I bring a blend of technical expertise and strategic\n" +
       "insight to every project. My recent work includes developing an advanced, multi-lingual Chatbot leveraging Retrieval-\n" +
@@ -183,7 +183,7 @@ export const logoText = "Bakkali Ayoub";
 
 export const marketingHeadlines = {
   mainHeadline: "Master Student in Artificiel Intelligence and Data Sciences",
-  subHeadline: "Machine Learning Enthusiastic",
+  subHeadline: "Looking for PFE Internship  in AI/Data Science",
 };
 
 export const websiteMetadata = {

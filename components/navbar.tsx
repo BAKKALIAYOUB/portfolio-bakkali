@@ -3,59 +3,71 @@
 import { Button } from "./ui/button";
 import Logo from "./logo";
 import { ModeToggle } from "./mode-toggle";
-import { Home, Briefcase, Mail, Presentation } from "lucide-react";
+import { Home, Briefcase, Mail, Presentation, Menu } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Navbar() {
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
 
   function navigateTo(path: string) {
     router.push(path);
+    setIsOpen(false);
   }
 
+  const navItems = [
+    { path: "/", icon: <Home className="h-4 w-4" />, label: "Home" },
+    { path: "/#projects", icon: <Presentation className="h-4 w-4" />, label: "Projects" },
+    { path: "/#work", icon: <Briefcase className="h-4 w-4" />, label: "Work" },
+    { path: "/#contact", icon: <Mail className="h-4 w-4" />, label: "Contact" }
+  ];
+
   return (
-    <div className="border bg-card text-card-foreground p-3 shadow-sm md:rounded-lg flex justify-between items-center top-0 sticky z-50">
-      <Logo onClick={() => navigateTo("/")} />
-      {/* Navigation Menus */}
-      <div className="space-x-3 items-center">
-        <Button
-          onClick={() => navigateTo("/")}
-          variant="outline"
-          size="sm"
-          className="ml-auto h-8"
-        >
-          <Home className=" h-4 w-4" />
-          <span className="hidden md:block ml-2">Home</span>
-        </Button>
-        <Button
-          onClick={() => navigateTo("/#projects")}
-          variant="outline"
-          size="sm"
-          className="ml-auto h-8"
-        >
-          <Presentation className=" h-4 w-4" />
-          <span className="hidden md:block ml-2">Projects</span>
-        </Button>
-        <Button
-          onClick={() => navigateTo("/#work")}
-          variant="outline"
-          size="sm"
-          className="ml-auto h-8"
-        >
-          <Briefcase className=" h-4 w-4" />
-          <span className="hidden md:block ml-2">Work</span>
-        </Button>
-        <Button
-          onClick={() => navigateTo("/#contact")}
-          variant="outline"
-          size="sm"
-          className="ml-auto h-8"
-        >
-          <Mail className=" h-4 w-4" />
-          <span className="hidden md:block ml-2">Contact</span>
-        </Button>
-        <ModeToggle />
+    <nav className="border bg-card text-card-foreground p-3 shadow-sm md:rounded-lg sticky top-0 z-50">
+      <div className="flex justify-between items-center">
+        <Logo onClick={() => navigateTo("/")} />
+
+        <div className="hidden md:flex space-x-3 items-center">
+          {navItems.map((item) => (
+            <Button
+              key={item.path}
+              onClick={() => navigateTo(item.path)}
+              variant="outline"
+              size="sm"
+              className="h-8"
+            >
+              {item.icon}
+              <span className="ml-2">{item.label}</span>
+            </Button>
+          ))}
+          <ModeToggle />
+        </div>
+
+        <div className="md:hidden flex items-center space-x-3">
+          <ModeToggle />
+          <Button variant="outline" size="sm" onClick={() => setIsOpen(!isOpen)}>
+            <Menu className="h-4 w-4" />
+          </Button>
+        </div>
       </div>
-    </div>
+
+      {isOpen && (
+        <div className="md:hidden mt-4 flex flex-col space-y-2">
+          {navItems.map((item) => (
+            <Button
+              key={item.path}
+              onClick={() => navigateTo(item.path)}
+              variant="outline"
+              size="sm"
+              className="w-full justify-start"
+            >
+              {item.icon}
+              <span className="ml-2">{item.label}</span>
+            </Button>
+          ))}
+        </div>
+      )}
+    </nav>
   );
 }
