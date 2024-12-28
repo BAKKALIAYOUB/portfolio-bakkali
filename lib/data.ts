@@ -150,7 +150,7 @@ export interface WorkExperience {
 export const workExperiences: WorkExperience[] = [
   {
     company : "Development of Multi Modal Q&A Chatbot - Vector Analytics",
-    logo : "/vector_analystic.png",
+    logo : "/portfolio-bakkali/vector_analystic.png",
     position: "Intern",
     description: "The ChatBot, powered by OpenAI's Language Learning Model (LLM), efficiently handles user queries across various document types. An intelligent LLMRouter directs queries to the appropriate agent based on document format, such as PDF, CSV, DOCX, or Excel files. For tabular data, the Pandas LLM Agent provides robust statistical analysis and calculations. Additionally, Multi-Modal Retrieval-Augmented Generation (RAG) enhances the chatbot’s capabilities, supporting both text and image data to offer a comprehensive, multimodal query-handling experience.",
     years: "Jul, 2024 - Aug, 2024",
@@ -158,7 +158,7 @@ export const workExperiences: WorkExperience[] = [
   },
   {
     company: "Web Application for Car Rental Management - D3SOFT",
-    logo: "/img.png",
+    logo: "/portfolio-bakkali/img.png",
     position: "Intern",
     description: "Manage rental agreements seamlessly with options to create, update, or remove contracts as needed. Efficiently administer user accounts, including controlling access levels within the application for enhanced security. The system provides real-time notifications, ensuring timely alerts for contract deadlines and scheduled car repair times. Track and oversee the availability and condition of rental vehicles, and handle reservations and scheduling for customer bookings, keeping every aspect of rental management streamlined and accessible.",
     years: "May, 2023 - Juin, 2023",
