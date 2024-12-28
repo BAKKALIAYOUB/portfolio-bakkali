@@ -17,10 +17,10 @@ export default function Navbar() {
   }
 
   const navItems = [
-    { path: "/", icon: <Home className="h-4 w-4" />, label: "Home" },
-    { path: "/#projects", icon: <Presentation className="h-4 w-4" />, label: "Projects" },
-    { path: "/#work", icon: <Briefcase className="h-4 w-4" />, label: "Work" },
-    { path: "/#contact", icon: <Mail className="h-4 w-4" />, label: "Contact" }
+    { path: "/portfolio-bakkali", icon: <Home className="h-4 w-4" />, label: "Home" },
+    { path: "portfolio-bakkali/#projects", icon: <Presentation className="h-4 w-4" />, label: "Projects" },
+    { path: "portfolio-bakkali/#work", icon: <Briefcase className="h-4 w-4" />, label: "Work" },
+    { path: "portfolio-bakkali/#contact", icon: <Mail className="h-4 w-4" />, label: "Contact" }
   ];
 
   return (
