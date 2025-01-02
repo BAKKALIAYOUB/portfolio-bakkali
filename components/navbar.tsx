@@ -3,7 +3,7 @@
 import { Button } from "./ui/button";
 import Logo from "./logo";
 import { ModeToggle } from "./mode-toggle";
-import { Home, Briefcase, Mail, Presentation, Menu } from "lucide-react";
+import { Home, Briefcase, Mail, Presentation, Menu, Download } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -20,7 +20,8 @@ export default function Navbar() {
     { path: "/", icon: <Home className="h-4 w-4" />, label: "Home" },
     { path: "/#projects", icon: <Presentation className="h-4 w-4" />, label: "Projects" },
     { path: "/#work", icon: <Briefcase className="h-4 w-4" />, label: "Work" },
-    { path: "/#contact", icon: <Mail className="h-4 w-4" />, label: "Contact" }
+    { path: "/#contact", icon: <Mail className="h-4 w-4" />, label: "Contact" },
+    { path: "https://drive.google.com/file/d/1SkptTbTVZiOvQoX4ReQDvy-Mcn-TaoTL/view?usp=sharing", icon: <Download className="h-4 w-4" />, label: "Download Resume"}
   ];
 
   return (
