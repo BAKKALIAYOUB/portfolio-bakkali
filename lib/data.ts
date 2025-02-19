@@ -149,6 +149,13 @@ export interface WorkExperience {
 
 export const workExperiences: WorkExperience[] = [
   {
+    company : "Circet Morroco",
+    logo : "/portfolio-bakkali/circetMorroco.png",
+    position: "Intern",
+    description: "Development an AI-powered call transcription system for conversations between agents and technicians. The goal is to accurately convert speech into text and analyze transcriptions using the Genesys cloud platform. This involves extracting key insights such as keywords, intent, and sentiment to enhance service quality and operational efficiency. The project integrates speech recognition, natural language processing (NLP), and cloud technologies, making it a blend of AI, automation, and data analysis to optimize technical support and communication. 🚀",
+    years: "Feb, 2024 - Present",
+  },
+  {
     company : "Development of Multi Modal Q&A Chatbot - Vector Analytics",
     logo : "/portfolio-bakkali/vector_analystic.png",
     position: "Intern",
