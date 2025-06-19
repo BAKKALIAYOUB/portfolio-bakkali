@@ -1,30 +1,34 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import { websiteMetadata } from "@/lib/data";
+import {ThemeProvider} from "@/components/theme-provider";
+import {websiteMetadata} from "@/lib/data";
 import "@/styles/globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
+import {Analytics} from "@vercel/analytics/next"
 import GroqChatbot from "../components/chatbot";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
-  title: websiteMetadata.title,
-  description: websiteMetadata.description,
+    title: websiteMetadata.title,
+    description: websiteMetadata.description,
 };
 
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
+                                       children,
+                                   }: {
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-            <GroqChatbot/>
+    return (
+        <html lang="en">
+        <body className={inter.className}>
+        <GroqChatbot/>
+
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+            {children}
+            <Analytics/>
+
         </ThemeProvider>
-      </body>
-    </html>
-  );
+        </body>
+        </html>
+    );
 }
