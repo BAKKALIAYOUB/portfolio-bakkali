@@ -5,7 +5,14 @@ import {MessageCircle, Send, X, Minimize2} from 'lucide-react';
 import Groq from "groq-sdk";
 import {systemPrompt} from "@/components/ayoubBakkaliPrompt";
 import ReactMarkdown from 'react-markdown';
-
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import rehypeHighlight from 'rehype-highlight';
+import remarkFootnotes from 'remark-footnotes';
+import remarkEmoji from 'remark-emoji';
+import remarkSmartypants from 'remark-smartypants';
 
 // Define the message interface
 interface Message {
@@ -159,7 +166,22 @@ export default function GroqChatbot(): JSX.Element {
                                                     : 'bg-white text-gray-800 border'
                                             }`}
                                         >
-                                            <ReactMarkdown>{message.content}</ReactMarkdown>
+                                            <ReactMarkdown
+                                                remarkPlugins={[
+                                                    remarkGfm,        // GitHub-flavored Markdown (tables, checkboxes, etc.)
+                                                    remarkMath,       // LaTeX math support
+                                                    remarkEmoji,      // emoji shortcuts like :sparkles:
+                                                    remarkSmartypants // smart quotes, dashes
+                                                ]}
+                                                rehypePlugins={[
+                                                    rehypeRaw,        // parse HTML in markdown
+                                                    rehypeKatex,      // render math equations
+                                                    rehypeHighlight   // syntax highlighting
+                                                ]}
+
+                                            >
+                                                {message.content}
+                                            </ReactMarkdown>
                                         </div>
                                     </div>
                                 ))}
