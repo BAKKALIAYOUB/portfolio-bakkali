@@ -20,15 +20,23 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-        <body className={inter.className}>
-        <GroqChatbot/>
+            <head>
+                {/* Open Graph tags (used by LinkedIn) */}
+                <meta property="og:title" content="Ayoub Bakkali's AI Portfolio" />
+                <meta property="og:description" content="Explore my portfolio and interact with an integrated chatbot!" />
+                <meta property="og:image" content="https://portfolio-bakkali.vercel.app/portfolio-bakkali/Thumbnail.png" />
+                <meta property="og:url" content="https://portfolio-bakkali.vercel.app/portfolio-bakkali" />
+                <meta property="og:type" content="website" />
+                <title>Ayoub Bakkali Portfolio</title>
+            </head>
+            <body className={inter.className}>
+                <GroqChatbot/>
 
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
-            <Analytics/>
-
-        </ThemeProvider>
-        </body>
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+                    <Analytics/>
+                    {children}
+                </ThemeProvider>
+            </body>
         </html>
     );
 }
