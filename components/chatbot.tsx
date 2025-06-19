@@ -106,12 +106,14 @@ export default function GroqChatbot(): JSX.Element {
             {!isOpen && (
                 <button
                     onClick={toggleOpen}
-                    className="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                    className="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110
+               dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white dark:shadow-gray-900"
                     aria-label="Open chat"
                 >
                     <MessageCircle size={24}/>
                 </button>
             )}
+
 
             {/* Chat Window */}
             {isOpen && (
@@ -119,25 +121,27 @@ export default function GroqChatbot(): JSX.Element {
                     isMinimized ? 'w-80 h-16' : 'w-96 h-[500px]'
                 }`}>
                     {/* Header */}
-                    <div className="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center">
+                    <div
+                        className="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center dark:bg-gray-800 dark:text-white">
                         <h3 className="font-semibold">AI Assistant</h3>
                         <div className="flex gap-2">
                             <button
                                 onClick={toggleMinimize}
-                                className="hover:bg-blue-700 p-1 rounded"
+                                className="hover:bg-blue-700 dark:hover:bg-gray-700 p-1 rounded"
                                 aria-label={isMinimized ? "Maximize chat" : "Minimize chat"}
                             >
                                 <Minimize2 size={16}/>
                             </button>
                             <button
                                 onClick={toggleClose}
-                                className="hover:bg-blue-700 p-1 rounded"
+                                className="hover:bg-blue-700 dark:hover:bg-red-700 p-1 rounded"
                                 aria-label="Close chat"
                             >
                                 <X size={16}/>
                             </button>
                         </div>
                     </div>
+
 
                     {!isMinimized && (
                         <>
