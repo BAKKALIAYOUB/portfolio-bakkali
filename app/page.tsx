@@ -15,9 +15,11 @@ import {
     projects,
     skills,
     workExperiences,
+    academicExperience, AcademicExperience
 } from "@/lib/data";
 import {MdEmail} from "react-icons/md";
 import {SiGithub} from "react-icons/si";
+import AcademicShowcase from "@/components/academix-showcase";
 
 export default function Home() {
     return (
@@ -85,6 +87,24 @@ export default function Home() {
                                         key={experience.company}
                                         experience={experience}
                                         whetherlast={workExperiences.length === index + 1}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Academic Section */}
+                    <section id="academic" className="mb-12">
+                        <h2 className="text-2xl font-semibold tracking-tight mb-6">
+                            Academic Background
+                        </h2>
+                        <div className="rounded-xl border bg-card shadow">
+                            <div className="p-4 md:p-6 space-y-6">
+                                {academicExperience.map((experience: AcademicExperience, index: number) => (
+                                    <AcademicShowcase
+                                        key={experience.title}
+                                        experience={experience}
+                                        whetherlast={academicExperience.length === index + 1}
                                     />
                                 ))}
                             </div>
