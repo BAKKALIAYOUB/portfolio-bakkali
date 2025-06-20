@@ -10,7 +10,6 @@ import rehypeRaw from 'rehype-raw';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeHighlight from 'rehype-highlight';
-import remarkFootnotes from 'remark-footnotes';
 import remarkEmoji from 'remark-emoji';
 import remarkSmartypants from 'remark-smartypants';
 
@@ -160,7 +159,7 @@ export default function GroqChatbot(): JSX.Element {
                                         className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                                     >
                                         <div
-                                            className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                                            className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg text-justify text-left ${
                                                 message.role === 'user'
                                                     ? 'bg-blue-600 text-white'
                                                     : 'bg-white text-gray-800 border'

@@ -153,7 +153,7 @@ export const workExperiences: WorkExperience[] = [
     logo : "/portfolio-bakkali/circetMorroco.png",
     position: "Intern",
     description: "Development an AI-powered call transcription system for conversations between agents and technicians. The goal is to accurately convert speech into text and analyze transcriptions using the Genesys cloud platform. This involves extracting key insights such as keywords, intent, and sentiment to enhance service quality and operational efficiency. The project integrates speech recognition, natural language processing (NLP), and cloud technologies, making it a blend of AI, automation, and data analysis to optimize technical support and communication. 🚀",
-    years: "Feb, 2024 - Present",
+    years: "Feb, 2024 - Jul, 2024",
   },
   {
     company : "Development of Multi Modal Q&A Chatbot - Vector Analytics",
@@ -190,7 +190,7 @@ export const logoText = "Bakkali Ayoub";
 
 export const marketingHeadlines = {
   mainHeadline: "Master Student in Artificiel Intelligence and Data Sciences",
-  subHeadline: "Looking for PFE Internship  in AI/Data Science",
+  subHeadline: "Looking for Job in Artificial Intelligence",
 };
 
 export const websiteMetadata = {
