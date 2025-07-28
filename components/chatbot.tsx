@@ -38,6 +38,7 @@ export default function GroqChatbot(): JSX.Element {
     const [input, setInput] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
+    const [partialResponse, setPartialResponse] = useState<string>('');
 
     const scrollToBottom = (): void => {
         messagesEndRef.current?.scrollIntoView({behavior: 'smooth'});
@@ -55,6 +56,7 @@ export default function GroqChatbot(): JSX.Element {
             model: "llama-3.3-70b-versatile",
             temperature: 0.7,
             max_tokens: 1024,
+            stream: true,
         });
     };
 
@@ -66,17 +68,25 @@ export default function GroqChatbot(): JSX.Element {
         setMessages(updatedMessages);
         setInput('');
         setIsLoading(true);
+        setPartialResponse('');
 
         try {
             const chatCompletion = await getGroqChatCompletion(updatedMessages);
-            const assistantMessage = chatCompletion.choices[0]?.message?.content || "Sorry, I couldn't generate a response.";
+            let fullResponse = '';
 
-            setMessages(prev => [...prev, {role: 'assistant', content: assistantMessage}]);
+            for await (const chunk of chatCompletion) {
+                const content = chunk.choices[0]?.delta?.content || '';
+                fullResponse += content;
+                setPartialResponse(fullResponse);
+            }
+
+            setMessages(prev => [...prev, {role: 'assistant', content: fullResponse}]);
+            setPartialResponse('');
         } catch (error) {
             console.error('Groq API Error:', error);
             setMessages(prev => [...prev, {
                 role: 'assistant',
-                content: 'Sorry, I encountered an error. Please try again.'
+                content: 'Désolé, j\'ai rencontré une erreur. Veuillez réessayer.'
             }]);
         } finally {
             setIsLoading(false);
@@ -184,6 +194,29 @@ export default function GroqChatbot(): JSX.Element {
                                         </div>
                                     </div>
                                 ))}
+                                {partialResponse && (
+                                    <div className="flex justify-start">
+                                        <div className="bg-white text-gray-800 border px-4 py-2 rounded-lg">
+                                            <ReactMarkdown
+                                                remarkPlugins={[
+                                                    remarkGfm,
+                                                    remarkMath,
+                                                    remarkEmoji,
+                                                    remarkSmartypants
+                                                ]}
+                                                rehypePlugins={[
+                                                    rehypeRaw,
+                                                    rehypeKatex,
+                                                    rehypeHighlight
+                                                ]}
+                                            >
+                                                {partialResponse}
+                                            </ReactMarkdown>
+                                        </div>
+                                    </div>
+                                )}
+
+
                                 {isLoading && (
                                     <div className="flex justify-start">
                                         <div className="bg-white text-gray-800 border px-4 py-2 rounded-lg">
