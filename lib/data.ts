@@ -181,6 +181,13 @@ export interface WorkExperience {
 
 export const workExperiences: WorkExperience[] = [
     {
+        company: "HCM Group",
+        logo: "/portfolio-bakkali/hcm.png",
+        position: "Consultant IA Junior",
+        description: "",
+        years: "Sep, 2025 - Present",
+    },
+    {
         company: "Circet Morroco",
         logo: "/portfolio-bakkali/circetMorroco.png",
         position: "Intern",
