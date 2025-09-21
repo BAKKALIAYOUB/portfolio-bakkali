@@ -25,10 +25,6 @@ const groq = new Groq({
     dangerouslyAllowBrowser: true,
 });
 
-
-// Define the system prompt
-
-
 export default function GroqChatbot(): JSX.Element {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [isMinimized, setIsMinimized] = useState<boolean>(false);
@@ -46,7 +42,7 @@ export default function GroqChatbot(): JSX.Element {
 
     useEffect(() => {
         scrollToBottom();
-    }, [messages]);
+    }, [messages, partialResponse]);
 
     const getGroqChatCompletion = async (userMessages: Message[]) => {
         const fullMessages = [systemPrompt, ...userMessages];
@@ -86,7 +82,7 @@ export default function GroqChatbot(): JSX.Element {
             console.error('Groq API Error:', error);
             setMessages(prev => [...prev, {
                 role: 'assistant',
-                content: 'Désolé, j\'ai rencontré une erreur. Veuillez réessayer.'
+                content: 'Sorry, I encountered an error. Please try again.'
             }]);
         } finally {
             setIsLoading(false);
@@ -104,100 +100,100 @@ export default function GroqChatbot(): JSX.Element {
         setInput(e.target.value);
     };
 
-    const toggleOpen = (): void => {
-        setIsOpen(true);
-    };
-
-    const toggleClose = (): void => {
-        setIsOpen(false);
-    };
-
-    const toggleMinimize = (): void => {
-        setIsMinimized(!isMinimized);
-    };
-
     return (
         <div className="fixed bottom-6 right-6 z-50">
             {/* Chat Button */}
             {!isOpen && (
                 <button
-                    onClick={toggleOpen}
-                    className="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110
-               dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white dark:shadow-gray-900"
+                    onClick={() => setIsOpen(true)}
+                    className="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 
+                    hover:scale-110 hover:shadow-xl dark:bg-blue-700 dark:hover:bg-blue-600 dark:shadow-lg flex items-center justify-center"
                     aria-label="Open chat"
                 >
-                    <MessageCircle size={24}/>
+                    <MessageCircle size={24} className="stroke-current" />
                 </button>
             )}
 
-
             {/* Chat Window */}
             {isOpen && (
-                <div className={`bg-white rounded-lg shadow-2xl border transition-all duration-300 ${
-                    isMinimized ? 'w-80 h-16' : 'w-96 h-[500px]'
+                <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 
+                dark:border-gray-700 overflow-hidden transition-all duration-300 flex flex-col ${
+                    isMinimized ? 'w-80 h-14' : 'w-96 h-[500px]'
                 }`}>
                     {/* Header */}
                     <div
-                        className="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center dark:bg-gray-800 dark:text-white">
-                        <h3 className="font-semibold">AI Assistant</h3>
-                        <div className="flex gap-2">
+                        className="bg-gradient-to-r from-blue-600 to-blue-500 dark:from-gray-700 dark:to-gray-800 
+                        text-white p-3 flex justify-between items-center select-none">
+                        <div className="flex items-center gap-2">
+                            <MessageCircle size={18} className="text-blue-200 dark:text-gray-400" />
+                            <h3 className="font-medium text-sm">AI Assistant</h3>
+                        </div>
+                        <div className="flex gap-1">
                             <button
-                                onClick={toggleMinimize}
-                                className="hover:bg-blue-700 dark:hover:bg-gray-700 p-1 rounded"
+                                onClick={() => setIsMinimized(!isMinimized)}
+                                className="hover:bg-white/10 p-1 rounded transition-colors"
                                 aria-label={isMinimized ? "Maximize chat" : "Minimize chat"}
                             >
-                                <Minimize2 size={16}/>
+                                <Minimize2 size={16} />
                             </button>
                             <button
-                                onClick={toggleClose}
-                                className="hover:bg-blue-700 dark:hover:bg-red-700 p-1 rounded"
+                                onClick={() => setIsOpen(false)}
+                                className="hover:bg-red-500/80 p-1 rounded transition-colors"
                                 aria-label="Close chat"
                             >
-                                <X size={16}/>
+                                <X size={16} />
                             </button>
                         </div>
                     </div>
 
-
                     {!isMinimized && (
                         <>
                             {/* Messages */}
-                            <div className="h-80 overflow-y-auto p-4 space-y-4 bg-gray-50">
+                            <div className="flex-grow overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-900 
+                            scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700">
                                 {messages.map((message: Message, index: number) => (
                                     <div
                                         key={index}
-                                        className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                                        className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} 
+                                        animate-in fade-in slide-in-from-bottom-2 duration-300`}
                                     >
                                         <div
-                                            className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg text-justify text-left ${
+                                            className={`max-w-[85%] px-4 py-2.5 rounded-2xl shadow-sm ${
                                                 message.role === 'user'
-                                                    ? 'bg-blue-600 text-white'
-                                                    : 'bg-white text-gray-800 border'
+                                                    ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-tr-none'
+                                                    : 'bg-white dark:bg-gray-800 dark:text-gray-100 text-gray-800 border border-gray-200 dark:border-gray-700 rounded-tl-none'
                                             }`}
                                         >
                                             <ReactMarkdown
+/*
+                                                className="prose dark:prose-invert prose-sm max-w-none prose-p:my-1 prose-pre:my-1"
+*/
                                                 remarkPlugins={[
-                                                    remarkGfm,        // GitHub-flavored Markdown (tables, checkboxes, etc.)
-                                                    remarkMath,       // LaTeX math support
-                                                    remarkEmoji,      // emoji shortcuts like :sparkles:
-                                                    remarkSmartypants // smart quotes, dashes
+                                                    remarkGfm,
+                                                    remarkMath,
+                                                    remarkEmoji,
+                                                    remarkSmartypants
                                                 ]}
                                                 rehypePlugins={[
-                                                    rehypeRaw,        // parse HTML in markdown
-                                                    rehypeKatex,      // render math equations
-                                                    rehypeHighlight   // syntax highlighting
+                                                    rehypeRaw,
+                                                    rehypeKatex,
+                                                    rehypeHighlight
                                                 ]}
-
                                             >
                                                 {message.content}
                                             </ReactMarkdown>
                                         </div>
                                     </div>
                                 ))}
+                                
                                 {partialResponse && (
-                                    <div className="flex justify-start">
-                                        <div className="bg-white text-gray-800 border px-4 py-2 rounded-lg">
+                                    <div className="flex justify-start animate-in fade-in slide-in-from-bottom-2 duration-200">
+                                        <div className="bg-white dark:bg-gray-800 dark:text-gray-100 text-gray-800 border 
+                                        border-gray-200 dark:border-gray-700 px-4 py-2.5 rounded-2xl rounded-tl-none shadow-sm max-w-[85%]">
                                             <ReactMarkdown
+/*
+                                                className="prose dark:prose-invert prose-sm max-w-none prose-p:my-1 prose-pre:my-1"
+*/
                                                 remarkPlugins={[
                                                     remarkGfm,
                                                     remarkMath,
@@ -216,43 +212,47 @@ export default function GroqChatbot(): JSX.Element {
                                     </div>
                                 )}
 
-
-                                {isLoading && (
+                                {isLoading && !partialResponse && (
                                     <div className="flex justify-start">
-                                        <div className="bg-white text-gray-800 border px-4 py-2 rounded-lg">
-                                            <div className="flex space-x-1">
-                                                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                                                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
-                                                     style={{animationDelay: '0.1s'}}></div>
-                                                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
-                                                     style={{animationDelay: '0.2s'}}></div>
+                                        <div className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border 
+                                        border-gray-200 dark:border-gray-700 px-4 py-3 rounded-2xl rounded-tl-none shadow-sm">
+                                            <div className="flex space-x-1.5">
+                                                <div className="w-2 h-2 bg-blue-400 dark:bg-blue-500 rounded-full animate-bounce"></div>
+                                                <div className="w-2 h-2 bg-blue-400 dark:bg-blue-500 rounded-full animate-bounce"
+                                                     style={{animationDelay: '0.15s'}}></div>
+                                                <div className="w-2 h-2 bg-blue-400 dark:bg-blue-500 rounded-full animate-bounce"
+                                                     style={{animationDelay: '0.3s'}}></div>
                                             </div>
                                         </div>
                                     </div>
                                 )}
-                                <div ref={messagesEndRef}/>
+                                <div ref={messagesEndRef} />
                             </div>
 
                             {/* Input */}
-                            <div className="p-4 border-t bg-white rounded-b-lg">
-                                <div className="flex space-x-2">
+                            <div className="p-3 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+                                <div className="flex space-x-2 items-center">
                                     <input
                                         type="text"
                                         value={input}
                                         onChange={handleInputChange}
                                         onKeyPress={handleKeyPress}
                                         placeholder="Type your message..."
-                                        className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        className="flex-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 
+                                        dark:text-gray-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 
+                                        focus:ring-blue-500 dark:focus:ring-blue-600 transition-all"
                                         disabled={isLoading}
                                         aria-label="Type your message"
                                     />
                                     <button
                                         onClick={sendMessage}
                                         disabled={isLoading || !input.trim()}
-                                        className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white p-2 rounded-lg transition-colors"
+                                        className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 dark:disabled:bg-gray-600 
+                                        text-white p-2.5 rounded-full transition-colors flex items-center justify-center
+                                        disabled:cursor-not-allowed"
                                         aria-label="Send message"
                                     >
-                                        <Send size={20}/>
+                                        <Send size={18} className="stroke-current" />
                                     </button>
                                 </div>
                             </div>

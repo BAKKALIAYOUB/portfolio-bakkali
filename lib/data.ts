@@ -221,7 +221,7 @@ export const aboutYou = {
         "Augmented Generation (RAG) and deploying a Real-Time Tweet Sentiment Analysis pipeline, showcasing a strong grasp of\n" +
         "end-to-end machine learning pipelines and natural language processing.",
     yearsOfExperience: ">1 years",
-    location: "Morocco, Casablanca",
+    location: "Morocco, Tangier",
     email: "ayoubbakkali484@gmail.com",
 };
 
