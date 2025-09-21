@@ -67,16 +67,6 @@ export default function Home() {
                         </div>
                     </section>
 
-                    {/* Projects Section */}
-                    <section id="projects" className="mb-12">
-                        <h2 className="text-2xl font-semibold tracking-tight mb-6">Academic Projects</h2>
-                        <div className="grid gap-5">
-                            {projects.map((project: Project) => (
-                                <ProjectShowcase key={project.title} project={project}/>
-                            ))}
-                        </div>
-                    </section>
-
                     {/* Work Section */}
                     <section id="work" className="mb-12">
                         <h2 className="text-2xl font-semibold tracking-tight mb-6">Professional Experience</h2>
@@ -92,6 +82,18 @@ export default function Home() {
                             </div>
                         </div>
                     </section>
+
+                    {/* Projects Section */}
+                    <section id="projects" className="mb-12">
+                        <h2 className="text-2xl font-semibold tracking-tight mb-6">Academic Projects</h2>
+                        <div className="grid gap-5">
+                            {projects.map((project: Project) => (
+                                <ProjectShowcase key={project.title} project={project}/>
+                            ))}
+                        </div>
+                    </section>
+
+
 
                     {/* Academic Section */}
                     <section id="academic" className="mb-12">
